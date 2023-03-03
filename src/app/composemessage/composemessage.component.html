@@ -9,7 +9,8 @@
                 <div class="row" style="user-select: text;">
                     <div class="col-lg-12" style="user-select: text;">
 
-                        <form action="/ComposeMessage" method="post" style="user-select: text;">
+                        <form action="/ComposeMessage" method="post" style="user-select: text;" (ngSubmit)="onSubmit()"
+                            #myForm="ngForm">
                             <input name="__RequestVerificationToken" type="hidden"
                                 value="FZHYy8HqAdW-0d7YFRAPzXXYWD1kw5FrhuzsZFszAT4GUVHlQa9LkCpwdlLF6hdw4rDSs4YIlw5wmy5rFIF9nlKWItVnRSqpMfvolpKqyyg1"
                                 style="user-select: text;"><input id="SelectedIds" name="SelectedIds" type="hidden"
@@ -38,7 +39,7 @@
                                                 <style style="user-select: text;">
                                                     .ccMenu a {
                                                         /*padding: 15px;
-        padding: 15px;*/
+                                                         padding: 15px;*/
                                                         /*display: block;*/
                                                         /*width: 125%;*/
                                                         font-size: 1em !important;
@@ -220,24 +221,6 @@
                                                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                 <div class="sparkline16-graph" style="user-select: text;">
                                                     <div class="datatable-dashv1-list custom-datatable-overright"
                                                         style="user-select: text;">
@@ -246,8 +229,12 @@
                                                                 <div class="col-lg-12" style="user-select: text;">
                                                                     <div class="all-form-element-inner"
                                                                         style="user-select: text;">
+
+
                                                                         <div class="form-group-inner"
                                                                             style="user-select: text;">
+
+
                                                                             <div class="row" style="user-select: text;">
                                                                                 <div class="col-md-4"
                                                                                     style="user-select: text;">
@@ -258,10 +245,12 @@
                                                                                 <div class="col-md-6"
                                                                                     style="user-select: text;">
                                                                                     <input class="form-control"
-                                                                                        id="ComposeMsgSubject"
-                                                                                        name="ComposeMsgSubject"
+                                                                                        type="text"
+                                                                                        [(ngModel)]="formData.subject"
+                                                                                        id="subject" name="subject"
                                                                                         type="text" value=""
                                                                                         style="user-select: text;">
+
                                                                                     <span class="field-validation-valid"
                                                                                         data-valmsg-for="ComposeMsgSubject"
                                                                                         data-valmsg-replace="true"
@@ -289,8 +278,9 @@
                                                                                 <div class="col-md-6"
                                                                                     style="user-select: text;">
                                                                                     <textarea class="form-control"
-                                                                                        cols="20" id="Body"
-                                                                                        maxlength="300" name="Body"
+                                                                                        cols="20" id="message"
+                                                                                        maxlength="300" name="message"
+                                                                                        [(ngModel)]="formData.message"
                                                                                         rows="2"
                                                                                         style="user-select: text;"></textarea>
                                                                                     <span class="field-validation-valid"
@@ -322,27 +312,16 @@
                                                                                 class="btn btn-sm btn-primary login-submit-cs"
                                                                                 style="user-select: text;"><i
                                                                                     class="fa fa-send-o"
-                                                                                    style="user-select: text;"></i> Send
+                                                                                    style="user-select: text;"></i>
+                                                                                Send
                                                                                 Message</button>
                                                                         </div>
-
-
-
-
-
-
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-
-
-
-
 
                                             </div>
                                         </div>
@@ -353,6 +332,13 @@
                             </div>
                             <br style="user-select: text;">
                         </form>
+
+
+                        <ul>
+                            <li *ngFor="let msg of msgs | async" class="text-white">
+                                {{ msg.subject }} - {{ msg.message }}
+                            </li>
+                        </ul>
 
                         <script style="user-select: text;">
                             window.onbeforeunload = function () {

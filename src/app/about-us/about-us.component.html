@@ -2,10 +2,7 @@
   <div class="container">
     <div class="d-flex justify-content-center">
       <div class="text-center title" style="">
-
-             We are on a Mission to Educate at least <br>1 Million   Users so that they are Financially Free
-      
-
+          We are on a Mission to Educate at least <br>1 Million Users so that they are Financially Free
       </div>
     </div>
   </div>
@@ -139,12 +136,28 @@
       <div class="main-text">Branch Office</div>
       <div class="mission" style="margin-top: 25px">Position</div>
 
-      <select onselect="branch_select" class="form-select">
+      <select onselect="branch_select" class="form-select" [(ngModel)]="selectedValue">
+
         <option selected>Branch Select</option>
         <option value="1">Maharashtra</option>
         <option value="2">Goa</option>
         <option value="3">Rajasthan</option>
       </select>
+      <!-- <button (click)="getValue()" class="text-white">Show Branch</button> -->
+
+      <!-- <p>MoneySaga Consultancy Services LLP
+        Flat no.7, Lane no. 1</p>
+      <p>Saikrupa Apartment, Shani Mandir Lane,</p>
+      <p>Netaji Nagar, Pimple Gurav, Pune.</p> -->
+
+      <div *ngIf="selectedValue === '1'" class="text-white">MoneySaga Consultancy Services LLP
+        Flat no.7, Lane no. 1,
+        Saikrupa Apartment, Shani Mandir Lane,
+        Netaji Nagar, Pimple Gurav, Pune.- 411061</div>
+      <div *ngIf="selectedValue === '2'" class="text-white">Coming Soon</div>
+      <div *ngIf="selectedValue === '3'" class="text-white">Coming Soon</div>
+
     </div>
   </div>
+
 </div>
