@@ -118,14 +118,14 @@
                                                         aria-describedby="OutBoxReport_info" style="width: 100%;">
                                                         <thead>
                                                             <tr role="row">
-                                                                <th class="dt-body-center sorting_asc" tabindex="0"
+                                                                <!-- <th class="dt-body-center sorting_asc" tabindex="0"
                                                                     aria-controls="OutBoxReport" rowspan="1" colspan="1"
                                                                     aria-sort="ascending"
                                                                     aria-label=": activate to sort column descending"
                                                                     style="width: 210.4px;"><input type="checkbox"
                                                                         name="select_all" value="1"
                                                                         id="example-select-all">
-                                                                </th>
+                                                                </th> -->
                                                                 <th class="sorting" tabindex="0"
                                                                     aria-controls="OutBoxReport" rowspan="1" colspan="1"
                                                                     aria-label="To: activate to sort column ascending"
@@ -137,7 +137,7 @@
                                                                 <th class="sorting" tabindex="0"
                                                                     aria-controls="OutBoxReport" rowspan="1" colspan="1"
                                                                     aria-label="Date: activate to sort column ascending"
-                                                                    style="width: 319.4px;">Date</th>
+                                                                    style="width: 319.4px;">Messages</th>
                                                                 <th class="HideId sorting"
                                                                     style="display: none; width: 0px;" tabindex="0"
                                                                     aria-controls="OutBoxReport" rowspan="1" colspan="1"
@@ -147,11 +147,51 @@
                                                         </thead>
                                                         <tbody>
 
-                                                            <tr class="odd">
+                                                            <!-- <tr class="odd">
                                                                 <td valign="top" colspan="4" class="dataTables_empty">No
                                                                     record(s) found</td>
-                                                            </tr>
+                                                            </tr> -->
+
+                                                            <!-- <tr role="row" class="even" *ngFor="let msg of msgs">
+
+                                                                <td><input type="checkbox" name="select_all" value="1"
+                                                                        id="example-select-all">MoneySaga Consultancy
+                                                                </td>
+                                                                <td class="sorting_1"> {{ msg.subject }}</td>
+                                                                <td>{{ msg.message }}</td>
+                                                            </tr> -->
+
+
+                                                            <ng-container *ngIf="msgs && msgs.length">
+                                                                <tr role="row" class="even"
+                                                                    *ngFor="let msg of msgs; let i=index">
+                                                                    <td>
+
+                                                                        <input type="checkbox" name="select_all"
+                                                                            value="1" id="example-select-all"
+                                                                            (change)="onDeleteRow(i)">
+
+
+                                                                        <!-- <input type="checkbox"
+                                                                            [(ngModel)]="msg.selected"> -->
+                                                                        MoneySaga
+                                                                        Consultancy
+                                                                    </td>
+                                                                    <td class="sorting_1">{{ msg.subject }}</td>
+                                                                    <td>{{ msg.message }}</td>
+                                                                </tr>
+                                                            </ng-container>
+                                                            <ng-container *ngIf="msgs && !msgs.length">
+                                                                <tr class="odd">
+                                                                    <td valign="top" colspan="4"
+                                                                        class="dataTables_empty">No record(s) found</td>
+                                                                </tr>
+                                                            </ng-container>
+
+
                                                         </tbody>
+                                                        <!-- <button (click)="onDeleteSelectedRows()">Delete Selected
+                                                            Rows</button> -->
                                                     </table>
                                                     <div class="dataTables_info" id="OutBoxReport_info" role="status"
                                                         aria-live="polite">
@@ -174,7 +214,7 @@
                                                             aria-controls="OutBoxReport" data-dt-idx="1" tabindex="0"
                                                             id="OutBoxReport_next">&gt;</a></div>
                                                 </div>
-                                                <div class="form-fields">
+                                                <!-- <div class="form-fields">
                                                     <div class="inputs">
                                                         <div class="buttons">
                                                             <button type="submit" id="DeleteSentMsg"
@@ -183,7 +223,7 @@
                                                                     class="fa fa-trash"></i> Delete</button>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <br>
                                             </div>
 
@@ -195,8 +235,6 @@
                             </div>
                             <br>
                         </form>
-
-
 
                     </div>
 
